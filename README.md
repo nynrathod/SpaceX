@@ -13,3 +13,7 @@ cd server && pnpm install
 ``
 Create .env file in server root, and add MONGODB_URI = ""
 ``
+
+```
+npm run dev
+```
