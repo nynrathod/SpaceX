@@ -1,43 +1,87 @@
+import { useLocation } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useLayoutEffect } from "react"
+import React, { useState } from "react";
+import axios from 'axios';
 
 function FormInfo() {
+	const navigate = useNavigate();
+
+
+	const state = useLocation();
+	console.log(state.state)
+
+	const [myData, setMyData] = useState({
+		fullName: "",
+		emailAddress: "",
+		whereDoYouWantToGo: "",
+		noOfTravellers: "",
+	});
+	console.log(myData)
+	useLayoutEffect(() => {
+		if (state.state != null) {
+
+			const id = state.state.uid
+			axios.get(`http://localhost:3000/api/form/getFormData/${id}`)
+				.then(function (response) {
+					// console.log(response);
+					const aa = response
+					setMyData(response.data)
+					console.log(myData)
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
+
+			window.history.replaceState({}, document.title)
+		} else {
+			window.history.replaceState({}, document.title)
+			window.location.replace("/")
+		}
+	}, []);
+
+	// console.log(state)
+
+	// window.history.replaceState({}, document.title)
+	// if (uid) {
+	// 	console.log('as')
+	// } else {
+	// 	navigate("/")
+	// }
 	return (
 		<Layout>
-			<div className="relative overflow-x-auto my-[40px] max-w-[500px] m-auto">
+			<div className="relative overflow-x-auto my-[40px] max-w-[700px] m-auto">
 				<table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
 					<thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 						<tr>
 							<th scope="col" className="px-6 py-3">
-								Product name
+								Full Name
 							</th>
 							<th scope="col" className="px-6 py-3">
-								Color
+								Email
+							</th>
+							<th scope="col" className="px-6 py-3">
+								Where do you want to go?
+							</th>
+							<th scope="col" className="px-6 py-3">
+								No. of travellers
 							</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-							<th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-								Apple MacBook Pro 17"
-							</th>
 							<td className="px-6 py-4">
-								Silver
+								{myData?.fullName}
 							</td>
-						</tr>
-						<tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-							<th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-								Apple MacBook Pro 17"
-							</th>
 							<td className="px-6 py-4">
-								Silver
+								{myData?.emailAddress}
 							</td>
-						</tr>
-						<tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-							<th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-								Apple MacBook Pro 17"
-							</th>
 							<td className="px-6 py-4">
-								Silver
+								{myData?.whereDoYouWantToGo}
+							</td>
+							<td className="px-6 py-4">
+								{myData?.noOfTravellers}
 							</td>
 						</tr>
 					</tbody>
