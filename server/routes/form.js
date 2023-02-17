@@ -3,9 +3,8 @@ const router = express.Router();
 const { Form } = require('../models/Forms');
 const { body, validationResult } = require('express-validator');
 
-
+// Route for form submit
 router.post('/submitForm', async (req, res) => {
-	// console.log(req.body)
 	try {
 		const myForm = new Form({
 			fullName: req.body.fullName,
@@ -22,6 +21,7 @@ router.post('/submitForm', async (req, res) => {
 	}
 });
 
+// Route for getting form data
 router.get('/getFormData/:id', async (req, res) => {
 	console.log(req.params)
 	try {
@@ -32,6 +32,5 @@ router.get('/getFormData/:id', async (req, res) => {
 		res.status(500).send("Internal Server Error");
 	}
 });
-
 
 module.exports = router

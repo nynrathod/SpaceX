@@ -1,13 +1,10 @@
 import { useLocation } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useLayoutEffect } from "react"
-import React, { useState } from "react";
+import { useLayoutEffect } from "react"
+import { useState } from "react";
 import axios from 'axios';
 
 function FormInfo() {
-	const navigate = useNavigate();
-
 
 	const state = useLocation();
 	console.log(state.state)
@@ -26,7 +23,6 @@ function FormInfo() {
 			axios.get(`http://localhost:3000/api/form/getFormData/${id}`)
 				.then(function (response) {
 					// console.log(response);
-					const aa = response
 					setMyData(response.data)
 					console.log(myData)
 				})
@@ -41,14 +37,6 @@ function FormInfo() {
 		}
 	}, []);
 
-	// console.log(state)
-
-	// window.history.replaceState({}, document.title)
-	// if (uid) {
-	// 	console.log('as')
-	// } else {
-	// 	navigate("/")
-	// }
 	return (
 		<Layout>
 			<div className="relative overflow-x-auto my-[40px] max-w-[700px] m-auto">

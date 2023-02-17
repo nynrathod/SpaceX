@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from "react-hook-form";
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import Layout from '../components/Layout/Layout';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
@@ -17,13 +15,11 @@ function Home() {
 
 	const navigate = useNavigate();
 	const [totalBudget, setTotalBudget] = useState('')
-	const { register, handleSubmit, setError, formState: { errors } } = useForm<IFormInputs>();
+	const { register, handleSubmit, formState: { errors } } = useForm<IFormInputs>();
 
 	const onSubmit = (formData: any) => {
-		// console.log(formData)
 		axios.post('http://localhost:3000/api/form/submitForm', formData)
 			.then(function (response) {
-				// console.log(response);
 				navigate("/form-info", { state: { uid: response.data } });
 			})
 			.catch(function (error) {
@@ -36,7 +32,6 @@ function Home() {
 		console.log(e.target.value)
 	}
 
-	console.log(errors)
 	return (
 		<Layout>
 			<div className="m-auto max-w-md mt-[20px]">
