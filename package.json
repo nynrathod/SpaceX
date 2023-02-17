@@ -1,0 +1,24 @@
+{
+	"name": "travelopia",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "concurrently \"cd server && nodemon server.js \" \"cd client && npm run dev \""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nynrathod/Travelopia.git"
+	},
+	"author": "nynrathod",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/nynrathod/Travelopia/issues"
+	},
+	"homepage": "https://github.com/nynrathod/Travelopia#readme",
+	"dependencies": {
+		"concurrently": "^7.6.0",
+		"nodemon": "^2.0.20"
+	}
+}
