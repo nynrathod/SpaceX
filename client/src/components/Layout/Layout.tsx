@@ -9,7 +9,7 @@ function Layout({ children }: appProps) {
 	return (
 		<>
 			<Header />
-			<div className="container m-auto pb-[100px]">
+			<div className="container m-auto pb-[100px] p-[20px]">
 				{children}
 			</div>
 			<Footer />
