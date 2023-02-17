@@ -15,6 +15,7 @@ import {
 	XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import { Link } from 'react-router-dom'
 
 const solutions = [
 	{
@@ -80,14 +81,14 @@ function Header() {
 			<div className="mx-auto max-w-7xl px-6">
 				<div className="flex items-center justify-between py-6 md:justify-start md:space-x-10">
 					<div className="flex justify-start lg:w-0 lg:flex-1">
-						<a href="#">
+						<Link to="/asdflkuhgi">
 							<span className="sr-only">Your Company</span>
 							<img
 								className="h-8 w-auto sm:h-10"
-								src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+								src="https://www.drupal.org/files/travelopia_logo.png"
 								alt=""
 							/>
-						</a>
+						</Link>
 					</div>
 					<div className="-my-2 -mr-2 md:hidden">
 						<Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -124,9 +125,9 @@ function Header() {
 											<div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
 												<div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
 													{solutions.map((item) => (
-														<a
+														<Link
 															key={item.name}
-															href={item.href}
+															to={item.href}
 															className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
 														>
 															<item.icon className="h-6 w-6 flex-shrink-0 text-indigo-600" aria-hidden="true" />
@@ -134,19 +135,19 @@ function Header() {
 																<p className="text-base font-medium text-gray-900">{item.name}</p>
 																<p className="mt-1 text-sm text-gray-500">{item.description}</p>
 															</div>
-														</a>
+														</Link>
 													))}
 												</div>
 												<div className="space-y-6 bg-gray-50 px-5 py-5 sm:flex sm:space-y-0 sm:space-x-10 sm:px-8">
 													{callsToAction.map((item) => (
 														<div key={item.name} className="flow-root">
-															<a
-																href={item.href}
+															<Link
+																to={item.href}
 																className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-100"
 															>
 																<item.icon className="h-6 w-6 flex-shrink-0 text-gray-400" aria-hidden="true" />
 																<span className="ml-3">{item.name}</span>
-															</a>
+															</Link>
 														</div>
 													))}
 												</div>
@@ -192,9 +193,9 @@ function Header() {
 											<div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
 												<div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
 													{resources.map((item) => (
-														<a
+														<Link
 															key={item.name}
-															href={item.href}
+															to={item.href}
 															className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
 														>
 															<item.icon className="h-6 w-6 flex-shrink-0 text-indigo-600" aria-hidden="true" />
@@ -202,7 +203,7 @@ function Header() {
 																<p className="text-base font-medium text-gray-900">{item.name}</p>
 																<p className="mt-1 text-sm text-gray-500">{item.description}</p>
 															</div>
-														</a>
+														</Link>
 													))}
 												</div>
 												<div className="bg-gray-50 px-5 py-5 sm:px-8 sm:py-8">
@@ -211,9 +212,9 @@ function Header() {
 														<ul role="list" className="mt-4 space-y-4">
 															{recentPosts.map((post) => (
 																<li key={post.id} className="truncate text-base">
-																	<a href={post.href} className="font-medium text-gray-900 hover:text-gray-700">
+																	<Link to={post.href} className="font-medium text-gray-900 hover:text-gray-700">
 																		{post.name}
-																	</a>
+																	</Link>
 																</li>
 															))}
 														</ul>
@@ -262,7 +263,7 @@ function Header() {
 								<div>
 									<img
 										className="h-8 w-auto"
-										src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+										src="https://www.drupal.org/files/travelopia_logo.png"
 										alt="Your Company"
 									/>
 								</div>
@@ -276,49 +277,49 @@ function Header() {
 							<div className="mt-6">
 								<nav className="grid gap-y-8">
 									{solutions.map((item) => (
-										<a
+										<Link
 											key={item.name}
-											href={item.href}
+											to={item.href}
 											className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50"
 										>
 											<item.icon className="h-6 w-6 flex-shrink-0 text-indigo-600" aria-hidden="true" />
 											<span className="ml-3 text-base font-medium text-gray-900">{item.name}</span>
-										</a>
+										</Link>
 									))}
 								</nav>
 							</div>
 						</div>
 						<div className="space-y-6 py-6 px-5">
 							<div className="grid grid-cols-2 gap-y-4 gap-x-8">
-								<a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
+								<Link to="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
 									Pricing
-								</a>
+								</Link>
 
-								<a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
+								<Link to="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
 									Docs
-								</a>
+								</Link>
 								{resources.map((item) => (
-									<a
+									<Link
 										key={item.name}
-										href={item.href}
+										to={item.href}
 										className="text-base font-medium text-gray-900 hover:text-gray-700"
 									>
 										{item.name}
-									</a>
+									</Link>
 								))}
 							</div>
 							<div>
-								<a
-									href="#"
+								<Link
+									to="#"
 									className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
 								>
 									Sign up
-								</a>
+								</Link>
 								<p className="mt-6 text-center text-base font-medium text-gray-500">
 									Existing customer?{' '}
-									<a href="#" className="text-indigo-600 hover:text-indigo-500">
+									<Link to="#" className="text-indigo-600 hover:text-indigo-500">
 										Sign in
-									</a>
+									</Link>
 								</p>
 							</div>
 						</div>
